@@ -30,15 +30,24 @@ function chry(html) {
         // console.log(chr[i].attribs.href);
         var nm = chr[i].attribs.href; 
         if (nm.toString().indexOf("mkv") > -1 || nm.toString().indexOf("mp4") > -1) {
-            var div = document.createElement('div');
+            var div = document.createElement('li');
             div.id = `scr${i}`;
-            div.classList.add("mov_item");
+            div.className = "list-group-item mov_item";
             div.addEventListener('click', function() { butclick(this) }, false);
+            
             tt.append(div);
-            div.innerHTML = chr[i].attribs.href;
+            div.innerHTML =`${chr[i].attribs.href}`;
+            div.append(end_Span());
         // console.log(scrap_url+$('a', html)[i].attribs.href);
         }
     }
+}
+
+function end_Span() {
+    const d_span = document.createElement('span');
+    d_span.id = "dwn";
+    d_span.innerHTML = '<i class="fas fa-download">';
+    return d_span; 
 }
 
 var scrap = function(Url) {
