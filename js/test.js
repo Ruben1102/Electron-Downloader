@@ -6,7 +6,7 @@ const https = require('https');
 const request = require('request');
 const $ = require('cheerio');
 
-var tt = document.getElementById('test');
+var tt = document.getElementById('mov_list');
 var url_input = document.getElementById('url');
 url_input.value = 'http://dl8.heyserver.in/film/2018-7/';
 var download_button = document.getElementById('down');
@@ -33,20 +33,21 @@ function chry(html) {
             var div = document.createElement('li');
             div.id = `scr${i}`;
             div.className = "list-group-item mov_item";
-            div.addEventListener('click', function() { butclick(this) }, false);
+            // div.addEventListener('click', function() { butclick(this) }, false);
             
             tt.append(div);
             div.innerHTML =`${chr[i].attribs.href}`;
-            div.append(end_Span());
+            div.append(end_Span(div.id));
         // console.log(scrap_url+$('a', html)[i].attribs.href);
         }
     }
 }
 
-function end_Span() {
+function end_Span(id) {
     const d_span = document.createElement('span');
     d_span.id = "dwn";
     d_span.innerHTML = '<i class="fas fa-download">';
+    d_span.addEventListener('click', function() { butclick(id) }, false);
     return d_span; 
 }
 
@@ -60,6 +61,19 @@ var scrap = function(Url) {
 
 function butclick(elem) {
     console.log(elem);
+    console.log($(`#${elem}`));
+    $(`#${elem}`).append("<div>hihihihihihih</div>");
+}
+
+function addProg(id) {
+/* <div class="progress">
+<div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+</div> */
+console.log($(`#${id}`));
+$(`#${id}`).append(`<div class="progress">
+<div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+</div>`);
+
 }
 
 var download = function(url) {

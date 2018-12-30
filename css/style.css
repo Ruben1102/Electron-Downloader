@@ -1,6 +1,12 @@
 body {
     background: #1f1f1f;
     color: gainsboro;
+    font-family: 'Thasadith', sans-serif;
+}
+
+.hf_tit {
+    text-align: center;
+    font-weight: 1000;
 }
 
 .mov_item {
@@ -19,7 +25,7 @@ body {
     padding: 10px;
 }
 
-#test li::before {
+#mov_list li::before {
     display: inline-block;
     content: 'tk';
     background-color: rgb(235, 129, 187);
@@ -32,7 +38,7 @@ body {
     text-align: center;
 }
 
-#test span#dwn {
+#mov_list span#dwn {
     position: absolute;
     right: 10px;
     padding: 5px;
@@ -43,13 +49,13 @@ body {
     cursor: pointer;
 }
 
-#test .mov_item:hover span#dwn {
+#mov_list .mov_item:hover span#dwn {
     visibility: visible;
     opacity: 1;
     transition-delay: 0s;
 }
 
-#test .progress {
+#mov_list .progress {
     height: 0.2rem;
     position: absolute;
     bottom: 0px;
